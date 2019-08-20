@@ -1,6 +1,6 @@
 import multiprocessing
 import numpy as np
-
+import pickle
 from multiprocessing import Pool
 
 from lib.env.reward import WeightedUnrealizedProfit
@@ -30,3 +30,11 @@ if __name__ == '__main__':
 
     trader = RLTrader(**params)
     trader.train(test_trained_model=True, render_test_env=True, render_report=True, save_report=True)
+    # save the trader to disk
+    filename = 'Trader_model_model.sav'
+    pickle.dump(trader, open(filename, 'wb'))
+ 
+    # some time later...
+ 
+    # load the trader from disk
+    loaded_model = pickle.load(open(filename, 'rb'))
