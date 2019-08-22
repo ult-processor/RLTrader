@@ -33,8 +33,10 @@ if __name__ == '__main__':
     # save the trader to disk
     filename = 'Trader_model_model.sav'
     pickle.dump(trader, open(filename, 'wb'))
+    print('dumped the model here ')
  
     # some time later...
  
     # load the trader from disk
     loaded_model = pickle.load(open(filename, 'rb'))
+    print('complete!')
